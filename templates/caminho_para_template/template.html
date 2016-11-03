@@ -1,0 +1,50 @@
+  {% load crispy_forms_tags %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dúvidas
+        <small>
+        	Envie uma mensagem para nós em caso de dúvida
+        </small>
+      </h1>
+      <ol class="breadcrumb">
+        <li class="active"> <i class="fa fa-file-o"></i> Dúvidas </li>
+      </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+      <div class="box">
+        <div class="box-body">
+          {% if messages %}
+              {% for message in messages %}
+                <div class="mensagem text-center fundo1">
+                  {{ message }}
+                </div>
+              {% endfor %}
+          {% endif %}
+        <form method="post" class="col-xs-12" enctype="multipart/form-data" action="">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form|crispy }}
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3 col-xs-2"></div>
+                <input id="disable_on_click" type="submit" class="botao text-center col-md-6 col-xs-8" value="Enviar" />
+              </div><!-- /.row" -->
+            </div><!-- /.container -->
+        </form>
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </section><!-- /.content -->
+  </div><!-- /.content-wrapper -->
+
+<script type="text/javascript">
+    document.getElementById('disable_on_click').onclick = function() {
+        this.form.submit(); 
+        this.disabled=true; 
+        this.value='Enviando…';
+    }
+</script>
