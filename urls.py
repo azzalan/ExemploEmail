@@ -3,7 +3,7 @@ from django.conf import settings
 from app.views import *
 
 urlpatterns = [
-    url(r'^membros/$',
-            MembrosView.as_view(),
-            name='membros'),
+    url(r'^caminho-de-url/resto-do-caminho/$',
+            EmailView.as_view(),
+            name='nome_da_url'),
 ]
